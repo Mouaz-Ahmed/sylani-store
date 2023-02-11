@@ -7,3 +7,14 @@
     margin-left: 20px;
     text-transform: uppercase;
 }
+.modal_footer{
+    display: flex;
+    justify-content: space-around;
+}
+.click_here{
+    color: blue;
+    text-decoration: underline;
+}
+.btn-success{
+    width: 120px;
+}
