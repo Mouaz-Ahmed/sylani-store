@@ -157,7 +157,7 @@ export default function Navbar() {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-            <div className='margin_bottom_div'></div>
+            {/* <div className='margin_bottom_div'></div> */}
         </div>
     )
 }
