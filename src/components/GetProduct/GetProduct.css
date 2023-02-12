@@ -1,0 +1,14 @@
+/* .card_container {
+    margin-top: 20px;
+    width: 300px !important;
+    height: 400px;
+    border-radius: 10px;
+    margin-bottom: 300px;
+    box-shadow: 0px 0px 5px 0px rgba(94, 92, 92, 0.95) !important;
+    transition: all 0.3s linear;
+}
+
+.card_container:hover {
+    box-shadow: 0px 0px 15px 0px rgba(94, 92, 92, 0.95) !important;
+    transform: scale(1.005);
+} */

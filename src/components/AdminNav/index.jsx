@@ -4,6 +4,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import logo from '../../assests/avatar.png'
 import { auth } from "../../config/firebase.js";
+
+
+import { RiAddFill, RiAccountCircleFill } from "react-icons/ri";
+import { SiCashapp } from "react-icons/si";
 import './adminNav.css'
 
 export default function AdminNav(prop) {
@@ -39,25 +43,25 @@ export default function AdminNav(prop) {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContents">
-                        <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav m-auto mb-2 mb-lg-0 admin_ul">
                             <li className="nav-item admin_nav_links">
                                 <a className="nav-link admin_nav_links" aria-current="page" onClick={() => {
                                     navigate("/additems");
                                 }}>
-                                    Add Items
+                                    <RiAddFill className="icons" />  <span className="hover_span"> Add Items</span>
                                 </a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link admin_nav_links" onClick={() => {
                                     navigate("/Orders");
                                 }} >
-                                    Orders
+                                    < SiCashapp className="icons" /> <span className="hover_span"> Orders</span>
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link admin_nav_links" onClick={()=>{
+                                <a className="nav-link admin_nav_links" onClick={() => {
                                     navigate("/account");
-                                }}>Account</a>
+                                }}> <RiAccountCircleFill className="icons" /><span className="hover_span"> Account</span></a>
                             </li>
                         </ul>
                         <div className="d-flex">

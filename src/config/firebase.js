@@ -1,7 +1,9 @@
+
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, setDoc, doc, addDoc, collection, getDocs, getDoc, where, query, onSnapshot } from "firebase/firestore";
 import { getStorage, uploadBytes, ref, getDownloadURL } from "firebase/storage";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDLvBpAYshxwsmNG5soKgHerKdedrNO4IE",
     authDomain: "final-hackathon-1f140.firebaseapp.com",
@@ -43,7 +45,16 @@ function additemToDb(obj) {
         imgUrl, itemName, category, itemDes, itemUnitName, itemUnitPrice
     });
 }
+async function getItemsFromDb() {
+    const querySnapshot = await getDocs(collection(db, 'companies'))
+    const items = []
 
-export {
-    firebaseSignIn, firebaseSignUp, auth, uploadImage, additemToDb
+    querySnapshot.forEach((doc) => {
+        items.push({ id: doc.id, ...doc.data() })
+    });
+    return items;
 }
+export {
+    firebaseSignIn, firebaseSignUp, auth, uploadImage, additemToDb, getItemsFromDb
+}
+  //

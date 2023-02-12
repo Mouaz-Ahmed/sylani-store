@@ -15,6 +15,7 @@
     width: 20% !important;
     padding: 10px !important;
     transition: all 0.3s linear !important;
+    margin-top: -5px !important;
 }
 
 .add_product_btn:hover {

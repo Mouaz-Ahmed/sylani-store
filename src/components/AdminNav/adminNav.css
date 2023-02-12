@@ -13,6 +13,7 @@
 .admin_logo:hover {
     transform: scale(1.1);
 }
+
 .signOutBtn {
     width: 70px;
     height: 30px;
@@ -22,6 +23,7 @@
 }
 
 .signOutBtn:hover {
+
     /* border: 1px solid white !important;
     background-color: #61b846 !important;
     color: black !important; */
@@ -31,16 +33,28 @@
 .admin_nav_links {
     color: white !important;
     cursor: pointer;
-    transition: all 0.1s linear;
-}
 
-.admin_nav_links:hover {
-    transform: scale(1.05);
 }
-
+.admin_ul{
+    
+}
 .admin_Span {
     margin-left: 10px;
-    color: white ;
+    color: white;
     cursor: pointer;
 
+}
+
+.icons {
+    margin-left: 20px;
+    font-size: 20px;
+    transition: all 0.2s linear;
+}
+
+.icons:hover {
+    transform: scale(1.2);
+}
+.hover_span{
+    transition: all 0.2s linear;
+    margin-left: 2px;
 }

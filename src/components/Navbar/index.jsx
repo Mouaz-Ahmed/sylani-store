@@ -8,6 +8,7 @@ import "./nav.css"
 import { auth, firebaseSignIn, firebaseSignUp } from '../../config/firebase.js'
 import AdminNav from '../AdminNav'
 import { onAuthStateChanged } from 'firebase/auth'
+import GetProduct from '../GetProduct'
 
 export default function Navbar() {
     const [logInToggler, setLogInToggler] = useState(false)
@@ -48,17 +49,17 @@ export default function Navbar() {
         }
     }
 
-    async function signInWithFirebase(){
+    async function signInWithFirebase() {
         try {
-          await firebaseSignIn(email,password)
-          console.log(auth)
-          if(auth.currentUser.uid == 'hhXkYIriMVOZ60pQWC50jpns20B3'){ setAdminNav(true) } 
-        setModalClose('modal')
-        swal("Login", "Login successfull", "success")
+            await firebaseSignIn(email, password)
+            console.log(auth)
+            if (auth.currentUser.uid == 'hhXkYIriMVOZ60pQWC50jpns20B3') { setAdminNav(true) }
+            setModalClose('modal')
+            swal("Login", "Login successfull", "success")
         } catch (error) {
-          alert('error', error)
+            alert('error', error)
         }
-      }
+    }
 
     return (
         <div className='main_div'>
@@ -84,7 +85,7 @@ export default function Navbar() {
                 </nav>
 
             </div>
-                {(adminNav)?<AdminNav adminAuthCheck={adminAuthCheck} />:<></>}
+            {(adminNav) ? <AdminNav adminAuthCheck={adminAuthCheck} /> : <></>}
 
             {/*LogIn modal */}
 
@@ -179,7 +180,8 @@ export default function Navbar() {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-            {/* <div className='margin_bottom_div'></div> */}
+            <div className='margin_bottom_div'></div>
+            <GetProduct />
         </div>
     )
 }
