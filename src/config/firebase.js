@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore";
-
+import { getFirestore, setDoc, doc, addDoc, collection, getDocs, getDoc, where, query, onSnapshot } from "firebase/firestore";
+import { getStorage, uploadBytes, ref, getDownloadURL } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyDLvBpAYshxwsmNG5soKgHerKdedrNO4IE",
     authDomain: "final-hackathon-1f140.firebaseapp.com",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
 const db = getFirestore(app);
-
+const storage = getStorage(app)
 async function firebaseSignUp(name, phone, email, password) {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await addUserToDb(name, phone, email, userCredential.user.uid)
@@ -27,6 +27,23 @@ function addUserToDb(name, phone, email, uid) {
 function firebaseSignIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
 }
+// upload img
+async function uploadImage(adImg) {
+    const storageRef = ref(storage, `images/${adImg.name}`);
+    const snapshot = await uploadBytes(storageRef, adImg);
+    const url = await getDownloadURL(snapshot.ref);
+    return url;
+}
+
+// for add new item to db
+function additemToDb(obj) {
+
+    let { imgUrl, itemName, category, itemDes, itemUnitName, itemUnitPrice } = obj;
+    return addDoc(collection(db, "companies"), {
+        imgUrl, itemName, category, itemDes, itemUnitName, itemUnitPrice
+    });
+}
+
 export {
-    firebaseSignIn, firebaseSignUp ,auth
+    firebaseSignIn, firebaseSignUp, auth, uploadImage, additemToDb
 }

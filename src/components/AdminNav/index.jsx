@@ -26,7 +26,7 @@ export default function AdminNav(prop) {
                 <div className="container-fluid admin_nav">
                     <img className="app_logo admin_logo" src={logo} alt="logo" />
 
-                    <span style={{ color: 'white' }} className="admin_Span">Admin</span>
+                    <span className="admin_Span">Admin</span>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -48,7 +48,7 @@ export default function AdminNav(prop) {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link admin_nav_links" href="#" onClick={() => {
+                                <a className="nav-link admin_nav_links" onClick={() => {
                                     navigate("/Orders");
                                 }} >
                                     Orders

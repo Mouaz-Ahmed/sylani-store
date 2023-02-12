@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import logo from "../../assests/Logo.png"
 import veg2 from "../../assests/veg2.jpg"
+import shan from "../../assests/shan.jpg"
 import meat from "../../assests/meat.jpg"
-import img from "../../assests/img.jpg"
 import swal from 'sweetalert'
 import "./nav.css"
 import { auth, firebaseSignIn, firebaseSignUp } from '../../config/firebase.js'
@@ -41,7 +41,7 @@ export default function Navbar() {
         try {
             await firebaseSignUp(name, phone, email, password)
             setModalClose('modal')
-            swal("Login", "Login successfull", "success")
+            swal("SignUp", "SignUp successfull", "success")
 
         } catch (error) {
             alert('error' + error)
@@ -160,14 +160,14 @@ export default function Navbar() {
             <h2 className='on_dis_store'>Online Discount Store</h2>
             <div id="carouselExample" className="carousel slide container slider_div">
                 <div className="carousel-inner">
-                    <div className="carousel-item">
-                        <img src={meat} className="d-block w-100 slider_img" alt="..." />
-                    </div>
                     <div className="carousel-item active">
                         <img src={veg2} className="d-block w-100 slider_img" alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src={img} className="d-block w-100 slider_img" alt="..." />
+                        <img src={meat} className="d-block w-100 slider_img" alt="..." />
+                    </div>
+                    <div className="carousel-item">
+                        <img src={shan} className="d-block w-100 slider_img" alt="..." />
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
