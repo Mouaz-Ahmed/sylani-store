@@ -1,0 +1,50 @@
+.admin_nav_cont1 {
+    margin-bottom: 5px;
+}
+
+.admin_nav {
+    height: 50px;
+    background-color: #61b846 !important;
+    border-radius: 5px;
+}
+
+.admin_logo {
+    width: 40px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+.admin_logo:hover {
+    transform: scale(1.1);
+}
+
+a {}
+
+.signOutBtn {
+    width: 70px;
+    height: 30px;
+    padding: 0 !important;
+    font-size: 12px !important;
+    transition: all 0.2s linear !important;
+}
+
+.signOutBtn:hover {
+    /* border: 1px solid white !important;
+    background-color: #61b846 !important;
+    color: black !important; */
+    transform: scale(1.05);
+}
+
+.admin_nav_links {
+    color: white !important;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.admin_nav_links:hover {
+    transform: scale(1.05);
+}
+
+.admin_Span {
+    margin-left: 10px;
+}

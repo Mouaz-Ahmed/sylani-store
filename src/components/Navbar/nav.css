@@ -1,16 +1,17 @@
 .logo {
     width: 80px;
-    transition: all 0.2s linear; 
+    transition: all 0.2s linear;
 }
-.logo:hover{
+
+.logo:hover {
     cursor: pointer;
-    transform: scale(1.1); 
+    transform: scale(1.1) !important;
 }
 
 .header_div {
     border-bottom: 1px solid rgb(219, 214, 214);
     margin-bottom: 10px;
-     box-shadow: 0px 0px 3px 0px rgba(94, 92, 92, 0.95); 
+    box-shadow: 0px 0px 3px 0px rgba(94, 92, 92, 0.95);
 }
 
 .h2 {
@@ -67,5 +68,13 @@
     text-align: center;
     color: #024F9D;
     letter-spacing: 1px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signUp_btn {
+    transition: all 0.2s linear !important;
+}
+
+.signUp_btn:hover {
+    transform: scale(1.05);
 }

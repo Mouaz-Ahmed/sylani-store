@@ -1,21 +1,40 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "../../assests/Logo.png"
 import veg2 from "../../assests/veg2.jpg"
-import veg3 from "../../assests/veg3.jpg"
 import meat from "../../assests/meat.jpg"
+import img from "../../assests/img.jpg"
 import swal from 'sweetalert'
 import "./nav.css"
-import { firebaseSignIn, firebaseSignUp } from '../../config/firebase.js'
+import { auth, firebaseSignIn, firebaseSignUp } from '../../config/firebase.js'
+import AdminNav from '../AdminNav'
+import { onAuthStateChanged } from 'firebase/auth'
 
 export default function Navbar() {
     const [logInToggler, setLogInToggler] = useState(false)
-
     const [modalClose, setModalClose] = useState('')
+    const [adminNav, setAdminNav] = useState(false)
+    const [userNav, setUserNav] = useState(false)
     // form inputs
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    // calling from adminNav
+    function adminAuthCheck(value) {
+        setAdminNav(value);
+    }
+
+    useEffect(() => {
+        // check user login or not
+        onAuthStateChanged(auth, (user) => {
+            if (user.uid == 'hhXkYIriMVOZ60pQWC50jpns20B3') {
+                setAdminNav(true)
+            } else {
+                setAdminNav(false)
+            }
+        });
+    }, []);
 
     async function signUpWithFirebase() {
         console.log(email)
@@ -29,16 +48,17 @@ export default function Navbar() {
         }
     }
 
-    async function signInWithFirebase() {
-
+    async function signInWithFirebase(){
         try {
-            await firebaseSignIn(email, password)
-            setModalClose('modal')
-            swal("Login", "Login successfull", "success")
+          await firebaseSignIn(email,password)
+          console.log(auth)
+          if(auth.currentUser.uid == 'hhXkYIriMVOZ60pQWC50jpns20B3'){ setAdminNav(true) } 
+        setModalClose('modal')
+        swal("Login", "Login successfull", "success")
         } catch (error) {
-            alert('error', error)
+          alert('error', error)
         }
-    }
+      }
 
     return (
         <div className='main_div'>
@@ -57,12 +77,14 @@ export default function Navbar() {
                             </ul>
                             <div className="d-flex" role="search">
                                 {/* <button className="btn btn-success mx-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onClick={() => { }}>Admin LogIn</button> */}
-                                <button className="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onClick={() => { }}>Sign Up</button>
+                                <button className="btn btn-success signUp_btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" onClick={() => { }}>Sign Up</button>
                             </div>
                         </div>
                     </div>
                 </nav>
+
             </div>
+                {(adminNav)?<AdminNav adminAuthCheck={adminAuthCheck} />:<></>}
 
             {/*LogIn modal */}
 
@@ -145,7 +167,7 @@ export default function Navbar() {
                         <img src={veg2} className="d-block w-100 slider_img" alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src={veg3} className="d-block w-100 slider_img" alt="..." />
+                        <img src={img} className="d-block w-100 slider_img" alt="..." />
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

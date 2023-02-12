@@ -4,12 +4,16 @@ import {
     RouterProvider,
     createRoutesFromElements,
     Route,
-    Navigate,
+    useNavigate,
   } from "react-router-dom";
-  
+import Account from "../views/Account";
+import AddItems from "../views/AddItems";
 import Home from "../views/Home";
+import Orders from "../views/Orders"
+
 
   export default function Router() {
+   
     const [authUser, setAuthUser] = useState(false);
   
     // useEffect(() => {
@@ -42,8 +46,10 @@ import Home from "../views/Home";
           /> */}
 
           <Route path="/" element={<Home />} />
+          <Route path="/additems" element={<AddItems />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/account" element={<Account />} />
           {/* <Route path="/home/company/:tokenId/:userId" element={<ComToken />} /> */}
-          {/* <Route path="/user" element={<User />} /> */}
         </>
       )
     );
