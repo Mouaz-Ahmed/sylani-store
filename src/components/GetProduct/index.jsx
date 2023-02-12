@@ -22,18 +22,21 @@ export default function GetProducts() {
         getAllItemsFromDB();
     }, []);
     return (
-        <div className="container-fluid get_product_cont">
-            <h3>All Products</h3>
-            <div className="row">
-                {items.map((item) => {
-                    console.log('hello ', item)
-                    return (
-                        <div className="col-md-3">
-                            <Card item={item} />
-                        </div>
-                    )
-                })}
+
+
+
+            <div className="container-fluid get_product_cont">
+                <h3 className="mt-4">All Products</h3>
+                <div className="row">
+                    {items.map((item) => {
+                        console.log('hello ', item)
+                        return (
+                            <div className="col-md-3">
+                                <Card item={item} />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
-        </div>
     );
 }
